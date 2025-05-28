@@ -21,12 +21,29 @@ import RadioButton from 'primevue/radiobutton';
 import Splitter from 'primevue/splitter'
 import SplitterPanel from 'primevue/splitterpanel'
 
+// 引入Tab
+import Tabs from 'primevue/tabs';
+import Tab from 'primevue/tab';
+import TabList from 'primevue/tablist';
+import TabPanel from 'primevue/tabpanel';
+import TabPanels from 'primevue/tabpanels';
+
+// 引入toolbar
+import Toolbar from 'primevue/toolbar';
+
+// 引入 icons
+import 'primeicons/primeicons.css'
+
 // 引入 Vue Draggable Plus
 import { VueDraggable } from 'vue-draggable-plus'
 
 const app = createApp(App);
 
-app.use(PrimeVue, { theme: Aura });
+app.use(PrimeVue, {
+    theme: {
+        preset: Aura,
+    }
+});
 
 // 按鈕
 app.component('Button', Button);
@@ -41,6 +58,14 @@ app.component('RadioButton', RadioButton);
 // 分割器
 app.component('Splitter', Splitter);
 app.component('SplitterPanel', SplitterPanel);
+// Tab
+app.component('Tabs', Tabs);
+app.component('Tab', Tab);
+app.component('TabList', TabList);
+app.component('TabPanel', TabPanel);
+app.component('TabPanels', TabPanels);
+// 工具列
+app.component('Toolbar', Toolbar);
 // Vue Draggable Plus
 app.component('VueDraggable', VueDraggable);
 
