@@ -4,6 +4,7 @@ import './style.css'
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import App from './App.vue'
+import router from './router/index.js'
 
 // 引入 PrimeVue 的按鈕
 import Button from 'primevue/button';
@@ -38,6 +39,9 @@ import 'primeicons/primeicons.css'
 import { VueDraggable } from 'vue-draggable-plus'
 
 const app = createApp(App);
+
+// 使用路由
+app.use(router);
 
 app.use(PrimeVue, {
     theme: {
