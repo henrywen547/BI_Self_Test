@@ -11,7 +11,12 @@ import Button from 'primevue/button';
 
 // 引入 PrimeVue 的提示框
 import Dialog from "primevue/dialog";
+
+// 引入 PrimeVue 的輸入框
 import InputText from "primevue/inputtext";
+
+// 引入 PrimeVue 的下拉選單
+import Select from 'primevue/select';
 
 // 引入 PrimeVue 的勾選項目
 import Checkbox from 'primevue/checkbox';
@@ -55,6 +60,8 @@ app.component('Button', Button);
 app.component('Dialog', Dialog);
 // 輸入框
 app.component('InputText', InputText);
+// 下拉選單
+app.component('Select', Select);
 // 勾選項目
 app.component('Checkbox', Checkbox);
 app.component('CheckboxGroup', CheckboxGroup);

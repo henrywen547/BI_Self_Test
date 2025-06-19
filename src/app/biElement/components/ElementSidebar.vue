@@ -77,7 +77,6 @@ export default {
                 console.error('Item is undefined or null');
                 return;
             }
-            console.log('Dragging item:', item);
             const source = 'element-sidebar';
             const dragItem = { ...item, source };
             event.dataTransfer.setData("item", JSON.stringify(dragItem));

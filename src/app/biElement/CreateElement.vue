@@ -11,69 +11,82 @@
             </Splitter>
         </div>
     </div>
-        <Dialog
-            v-model:visible="dialogVisible"
-            modal
-            header="選擇頁籤"
-            :style="{ width: '25%' }"
+    <Dialog
+        v-model:visible="dialogVisible"
+        modal
+        header="選擇頁籤"
+        :style="{ width: '25vw' }"
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+        :closable="false"
+    >
+        <div
+            v-for="option in ops"
+            :key="option.value"
+            class="template-option"
+            :class="{ selected: selected === option.value }"
+            @click="selected = option.value"
         >
-            <div
-                v-for="option in ops"
-                :key="option.value"
-                class="template-option"
-                :class="{ selected: selected === option.value }"
-                @click="selected = option.value"
-            >
-                <img :src="option.src" alt="Icon" style="width: 80px;"/>
-                <div class="template-label">
-                    {{ option.label }}
-                </div>
+            <img :src="option.src" alt="Icon" style="width: 80px;"/>
+            <div class="template-label">
+                {{ option.label }}
             </div>
-            <div class="button-row">
-                <Button
-                    type="button"
-                    label="取消"
-                    severity="secondary"
-                    size="small"
-                    @click="dialogVisible = false"
-                ></Button>
-                <Button
-                    type="button"
-                    label="儲存"
-                    size="small"
-                    @click="
-                        dialogVisible = false;
-                        addPanel();
-                    "
-                ></Button>
-            </div>
-        </Dialog>
-        <Dialog
-            v-model:visible="defSettingDialogVisible"
-            modal
-            header="圖表元件設定"
-            :style="{ width: '50%' }">
-            <Tabs value="0">
+        </div>
+        <div class="button-row">
+            <Button
+                type="button"
+                label="儲存"
+                size="small"
+                @click="
+                    dialogVisible = false;
+                    addPanel();
+                "
+            ></Button>
+        </div>
+    </Dialog>
+    <Dialog
+        v-model:visible="defSettingDialogVisible"
+        modal
+        header="物件詳細資訊"
+        :style="{ width: '25%' }"
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+        :closable="false">
+        <Tabs value="0">
                 <TabList>
                     <Tab value="0">圖表設定</Tab>
                     <Tab value="1">來源資料設定</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel value="0">
-                        <label for="elementname">元件名稱:</label>
-                        <InputText id="elementname" />
-                        <label for="elementdesc">元件描述:</label>
-                        <InputText id="elementdesc" />
+                        <label for="objectname">元件名稱:</label>
+                        <InputText id="objectname" v-model="form.objectName"/>
+                        <br />
+                        <label for="objectdesc">元件描述:</label>
+                        <InputText id="objectdesc" v-model="form.objectDesc"/>
                     </TabPanel>
                     <TabPanel value="1">
-                        <label for="datasource">資料來源:</label>
-                        <InputText id="datasource" />
-                        <label for="query">查詢語句:</label>
-                        <InputText id="query" />
+                        <Select
+                            v-model="form.selectedAnalysis"
+                            :options="analysisOptions"
+                            variant="filled"
+                            showClear
+                            optionLabel="analysisName"
+                            placeholder="選擇資料來源"
+                            class="w-full md:w-56"
+                        ></Select>
                     </TabPanel>
                 </TabPanels>
-            </Tabs>
-        </Dialog>
+            </Tabs>    
+            <div class="button-row">
+                <Button
+                    type="button"
+                    label="儲存"
+                    size="small"
+                    @click="defSettingDialogVisible = false;
+                    submit();"
+                    :disabled="!form.objectName || !form.objectDesc || !form.selectedAnalysis"
+                ></Button>
+            </div>
+    </Dialog>
 </template>
 
 <script>
@@ -81,6 +94,9 @@ import { ref } from 'vue'
 import { createSplitterTemplate } from './utils/SplitterFactory.js';
 import ElementSidebar from './components/ElementSidebar.vue';
 import BarChart from './components/BarChart.vue';
+import LineChart from './components/LineChart.vue';
+import PieChart from './components/PieChart.vue';
+import Table from './components/Table.vue';
 import Icon1by1 from '../../assets/Icon1by1.svg'
 import Icon1by2 from '../../assets/Icon1by2.svg'
 import Icon1by3 from '../../assets/Icon1by3.svg'
@@ -89,6 +105,9 @@ export default {
     components: {
         ElementSidebar,
         BarChart,
+        LineChart,
+        PieChart,
+        Table,
     },
     data () {
         return {
@@ -101,7 +120,24 @@ export default {
                 { value: '1by3', label: '1X3', src: Icon1by3 }
             ],
             panels: ref(null),
+            form: {
+                objectName: '',
+                objectDesc: '',
+                selectedAnalysis: null
+            },
+            analysisOptions: ref([
+                {
+                    analysisName: 'Example',
+                },
+                {
+                    analysisName: 'Example2',
+                },
+                {
+                    analysisName: 'Example3',
+                }
+            ]),
             setupComplete: ref(false),
+            currentPanel: ref(null),
         }
     },
     mounted() {
@@ -122,16 +158,29 @@ export default {
                     panel.sidebarItem.type_str = 'BarChart';
                 } else if (item.type === 'line') {
                     panel.sidebarItem.type = LineChart;
+                    panel.sidebarItem.type_str = 'LineChart';
                 } else if (item.type === 'pie') {
                     panel.sidebarItem.type = PieChart;
+                    panel.sidebarItem.type_str = 'PieChart';
                 } else if (item.type === 'table') {
                     panel.sidebarItem.type = Table;
+                    panel.sidebarItem.type_str = 'Table';
                 }
+                this.currentPanel = panel;
                 this.defSettingDialogVisible = true;
-                panel.setupComplete = true;
-
-                console.log(panel);
             }
+        },
+        submit() {
+            if (!this.form.objectName || !this.form.objectDesc || !this.form.selectedAnalysis) {
+                return;
+            }
+            this.currentPanel.sidebarItem.def = {
+                objectName: this.form.objectName,
+                objectDesc: this.form.objectDesc,
+                selectedAnalysis: this.form.selectedAnalysis
+            }
+            this.currentPanel.setupComplete = true;
+            console.log(this.panels);
         }
     },
 }
