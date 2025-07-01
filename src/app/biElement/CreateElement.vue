@@ -6,9 +6,29 @@
                 <template v-for="(panel, index) in panels" :key="index">
                     <SplitterPanel :size="panel.size" class="panel-drop-area" @dragover.prevent @drop="handleDrop($event, panel)">
                         <component :is="panel.sidebarItem.type" v-if="panel.setupComplete" class="sidebar-item"></component>
+                        <Button
+                            v-if="panel.setupComplete"
+                            type="button"
+                            label="刪除元件"
+                            severity="danger"
+                            size="small"
+                            variant="outlined"
+                            @click="clearPanel(panel)">
+                        </Button>
                     </SplitterPanel>
                 </template>
             </Splitter>
+            <Button
+                v-tooltip.bottom="{
+                    value: '請將所有區塊設定完成',
+                    disabled: whiteboardValid
+                }"
+                type="button"
+                label="儲存"
+                size="small"
+                @click="saveWhiteboard"
+                :disabled="!whiteboardValid">
+            </Button>
         </div>
     </div>
     <Dialog
@@ -78,6 +98,10 @@
             </Tabs>    
             <div class="button-row">
                 <Button
+                    v-tooltip.bottom="{
+                        value: '請填寫元件名稱、描述和資料來源',
+                        disabled: !(!form.objectName || !form.objectDesc || !form.selectedAnalysis)
+                    }"
                     type="button"
                     label="儲存"
                     size="small"
@@ -143,12 +167,23 @@ export default {
     mounted() {
         this.dialogVisible = true;
     },
+    computed: {
+        whiteboardValid() {
+            return this.panels && this.panels.length > 0 && this.panels.every(panel => panel.setupComplete);
+        }
+    },
     methods: {
         addPanel () {
             if (!this.setupComplete) {
                 this.panels = createSplitterTemplate(this.selected);
                 this.setupComplete = true;
             }
+        },
+        clearPanel(panel) {
+            panel.sidebarItem.type = null;
+            panel.sidebarItem.type_str = '';
+            panel.sidebarItem.def = null;
+            panel.setupComplete = false;
         },
         handleDrop(event, panel) {
             const item = JSON.parse(event.dataTransfer.getData('item'));
@@ -181,6 +216,29 @@ export default {
             }
             this.currentPanel.setupComplete = true;
             console.log(this.panels);
+        },
+        saveWhiteboard() {
+            if (!this.whiteboardValid) {
+                return;
+            }
+
+            const whiteboardData = {
+                elementName: 'New Element',
+                elementType: this.panels.length,
+                elementCells: this.panels.map(panel => ({
+                    cellIndex: panel.cellIndex,
+                    cellType: panel.sidebarItem.type_str,
+                    definition: panel.sidebarItem.def
+                }))
+            }
+
+            console.log('Saving whiteboard data:', whiteboardData);
+
+            // fetch('http://localhost:8080/api/v1/BI/element', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(whiteboardData)
+            // })
         }
     },
 }
@@ -205,6 +263,7 @@ export default {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     justify-content: center;
 }

@@ -41,12 +41,12 @@ export default {
         }
     },
     created () {
-        // this.fetchElementList()
+        this.fetchElementList()
     },
     methods: {
         async fetchElementList () {
             try {
-                const response = await fetch('...', {
+                const response = await fetch('http://localhost:8080/api/v1/BI/elements', {
                     method: 'GET',
                     headers: { 'Content-Type' : 'application/json' }
                 })

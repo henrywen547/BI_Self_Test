@@ -37,6 +37,9 @@ import TabPanels from 'primevue/tabpanels';
 // 引入toolbar
 import Toolbar from 'primevue/toolbar';
 
+// 引入提示工具
+import Tooltip from 'primevue/tooltip';
+
 // 引入 icons
 import 'primeicons/primeicons.css'
 
@@ -77,6 +80,8 @@ app.component('TabPanel', TabPanel);
 app.component('TabPanels', TabPanels);
 // 工具列
 app.component('Toolbar', Toolbar);
+// 提示工具
+app.directive('tooltip', Tooltip);
 // Vue Draggable Plus
 app.component('VueDraggable', VueDraggable);
 
