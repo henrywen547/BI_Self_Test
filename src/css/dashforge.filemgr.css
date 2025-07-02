@@ -1,0 +1,507 @@
+/*
+ * Dashforge File Manager Page
+ *
+ * This style is use in file manager page.
+ *
+ */
+.app-filemgr {
+  padding: 0 !important;
+}
+
+.aside-fixedbtn {
+  position: fixed;
+  z-index: 100;
+  top: 70px;
+  width: 58px;
+  border-right: 1px solid var(--gray-light);
+  background-color: var(--gray-lighter);
+  height: 100vh;
+}
+
+.aside-fixedbtn .btn {
+  position: relative;
+  border-radius: 0;
+  min-width: 58px;
+  height: 140px;
+  padding-top: 36px;
+  writing-mode: vertical-lr;
+  letter-spacing: 1px;
+  border-right: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
+  background-color: var(--bg-white)
+}
+
+#btn-back {
+  background-color: transparent;
+}
+
+.aside-fixedbtn .btn:focus {
+  box-shadow: none;
+}
+
+.aside-fixedbtn .btn i {
+  position: absolute;
+  left: 20px;
+  top: 26px;
+  transition: all .3s;
+}
+
+#filemgrMenuclose.close i {
+  transform: rotate(180deg) !important;
+  left: 17px;
+  transition: all .3s;
+}
+
+#filemgrMenuclose.close {
+  background-color: transparent;
+}
+
+/*客戶列表*/
+.filemgr-navleft {
+  background-color: var(--gray-lighter);
+  position: fixed;
+  z-index: 99;
+  top: 70px;
+  left: 58px;
+  bottom: 0;
+  width: 220px;
+  padding: 0px 10px 10px;
+  border-right: 1px solid var(--gray-light);
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  transition: all .3s;
+}
+
+.filemgr-cuslist-header {
+  padding: 16px 0;
+  display: flex;
+}
+
+.filemgr-cuslist-header .form-switch {
+  margin-left: 10px;
+}
+
+.filemgr-cuslist-header~.filemgr-cuslist-body {
+  margin-top: 0;
+}
+
+.filemgr-cuslist-body {
+  margin-top: 16px;
+}
+
+.list-cus .form-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 4px;
+  margin-top: 16px;
+}
+
+.list-cus label {
+  color: var(--gray-iron);
+}
+
+.list-cus .nav-link {
+  padding: 12px 4px;
+  position: relative;
+  border-radius: 0;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.list-cus .nav-link a,
+.list-cus .nav-link small {
+  color: var(--gray-black);
+  display: flex;
+  align-items: center;
+}
+
+.list-cus .nav-link a .badge {
+  background-color: var(--bg-info);
+  color: var(--tx-white);
+  border-radius: 10px;
+  margin-left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.list-cus .btn-collapse::after {
+  font-family: "bootstrap-icons" !important;
+  content: "\f285";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  right: 4px;
+  font-size: 12px;
+  color: var(--gray-black);
+  transition: all 0.3s;
+}
+
+.list-cus .btn-collapse.collapsed::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.list-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--gray-iron);
+  padding: 20px 4px;
+}
+
+.list-btn:hover {
+  color: var(--bg-info);
+}
+
+.table-cus {
+  margin-bottom: 0;
+}
+
+.table-cus tbody th,
+.table-cus td {
+  font-size: 12px !important;
+  padding: 4px !important;
+  vertical-align: middle;
+}
+
+.table-cus tbody th {
+  width: 80px;
+  color: var(--gray-black)
+}
+
+
+.filemgr-wrapper {
+  position: relative;
+  margin-left: 278px;
+  height: calc(100vh - 70px);
+}
+
+.filemgr-sidebar {
+  position: fixed;
+  z-index: 98;
+  top: 70px;
+  bottom: 0px;
+  left: 277px;
+  width: 190px;
+  padding: 0 10px;
+  border: 1px solid var(--gray-light);
+  background-color: var(--bg-white);
+  transition: all 0.3s;
+}
+
+.filemgr-sidebar-header {
+  padding: 12px 0px 10px 4px;
+}
+
+.filemgr-sidebar-header h5 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.filemgr-sidebar-header p {
+  margin-bottom: 0;
+}
+
+.filemgr-sidebar-header .tags {
+  display: inline-flex;
+  margin-left: -4px;
+  margin-top: 8px;
+}
+
+.filemgr-sidebar-header .tags .badge+.badge {
+  margin-left: 4px;
+}
+
+/*客戶名稱旁的購物車*/
+.bi-cart {
+  font-size: 20px;
+  color: #1e477c;
+  font-weight: 900;
+}
+
+.cart-container {
+  position: relative;
+}
+
+.filemgr-sidebar-header .cart-container .bi-cart {
+  position: relative;
+}
+
+.cart-container .badge {
+  position: absolute;
+  right: -84%;
+  bottom: 55%;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.filemgr-sidebar-body {
+  height: calc(100vh - 180px);
+  overflow-y: auto;
+  position: relative;
+  border-top: 1px solid var(--gray-light);
+  padding-top: 10px;
+  padding-right: 0;
+  overflow-x: hidden;
+}
+
+.filemgr-sidebar-body .nav-aside .nav-link {
+  padding-left: 8px;
+}
+
+.filemgr-sidebar-body .nav-aside .nav-link::before {
+  content: none;
+}
+
+/*快速連結*/
+.btn-fast-block {
+  margin-top: 24px;
+}
+
+.btn-fast-block h6 {
+  font-size: 12px;
+  color: var(--gray-iron);
+}
+
+.btn-fast-block .btn {
+  border-radius: 0;
+  width: 100%;
+  margin: 0px;
+  text-align: left;
+  padding-left: 0;
+  font-size: 14px;
+  color: var(--gray-black);
+  font-weight: normal;
+  padding: 6px;
+}
+
+.btn-fast-block .btn:hover {
+  color: var(--bg-info);
+}
+
+.btn-fast-block .btn:focus {
+  box-shadow: none;
+}
+
+.btn-fast-block .btn img {
+  margin-right: 6px;
+  width: 24px;
+  height: 24px;
+}
+
+.filemgr-sidebar~.filemgr-content {
+  margin-left: 190px;
+}
+
+.filemgr-content {
+  margin-left: 0;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.filemgr-content header {
+  margin-top: 10px;
+}
+
+
+@media (min-width: 1400px) {
+  .filemgr-content.with-sectionnav {
+    left: 220px;
+    right: 160px;
+  }
+}
+
+
+
+@media (min-width: 1600px) {
+  .section-nav~.container-fluid {
+    padding-right: 160px;
+  }
+}
+
+#navSection {
+  border-left: 1px solid rgba(72, 94, 144, 0.16);
+  padding-left: 15px;
+}
+
+.section-nav {
+  position: fixed;
+  top: 150px;
+  bottom: 150px;
+  right: 0;
+  width: 160px;
+  padding: 20px 15px;
+  display: none;
+}
+
+@media (min-width: 1600px) {
+  .section-nav {
+    display: block;
+  }
+}
+
+.section-nav .nav-label {
+  font-size: 10px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter UI", Roboto, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: #8392a5;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.section-nav .nav-link {
+  color: #1b2e4b;
+  padding: 0;
+  display: block;
+  position: relative;
+  font-size: 13px;
+}
+
+.section-nav .nav-link:hover {
+  color: #04539e;
+}
+
+.section-nav .nav-link+.nav-link {
+  margin-top: 8px;
+}
+
+.section-nav .nav-link.active {
+  color: #04539e;
+  font-weight: 500;
+  letter-spacing: -.12px;
+}
+
+.section-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -31px;
+  margin-top: -.5px;
+  background-color: #04539e;
+  height: 1px;
+  width: 30px;
+}
+
+
+.cus-data {
+  font-weight: normal;
+  color: #111;
+}
+
+.nav-crm .nav-label {
+  position: relative;
+}
+
+.nav-crm .btn-link {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  color: #04327a;
+}
+
+.nav-crm .btn-link:after {
+  font-family: bootstrap-icons !important;
+  content: "\F2E7";
+  display: inline-block;
+  position: absolute;
+  right: -9px;
+  font-size: 16px;
+  color: #606d82;
+  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-crm .btn-link.collapsed:after {
+  font-family: bootstrap-icons !important;
+  content: "\F4FD";
+}
+
+.nav-crm .nav-link.active {
+  color: #2364AA;
+  font-weight: bold;
+  background: var(--body-bg);
+  height: 30px;
+  padding-left: 10px;
+}
+
+
+@media (min-width:375px) and (max-width: 991px) {
+  .aside-fixed~.app-filemgr.content-fixed {
+    width: 100%;
+  }
+
+  .aside-fixed.minimize~.app-filemgr.content-fixed {
+    width: 100%;
+  }
+}
+
+
+/*關閉動作*/
+.navcolse .filemgr-navleft {
+  transform: translateX(-280px);
+  transition: all .3s;
+}
+
+.navcolse .aside-fixedbtn #navclose i {
+  transform: rotate(180deg);
+  left: 17px;
+  transition: all .3s;
+}
+
+.navcolse .aside-fixedbtn #navclose {
+  background-color: transparent;
+}
+
+.navcolse .filemgr-sidebar {
+  transform: translateX(-219px);
+  transition: all 0.3s;
+}
+
+.navcolse .filemgr-sidebar-close .filemgr-sidebar {
+  transform: translateX(-409px);
+  transition: all 0.3s;
+}
+
+.filemgr-sidebar-close .filemgr-sidebar {
+  transform: translateX(-219px);
+  transition: all 0.3s;
+}
+
+.navcolse .filemgr-wrapper {
+  margin-left: 58px;
+  transition: all 0.3s;
+}
+
+.filemgr-sidebar-close.filemgr-wrapper .filemgr-content {
+  margin-left: 0;
+  transition: all 0.3s;
+}
+
+/*客戶總覽底下的次選單位置*/
+.filemgr-content .container-fluid:has(.navbar-topmenu-wrapper) {
+  padding-top: 70px;
+}
+
+.navcolse .filemgr-wrapper.filemgr-sidebar-close .filemgr-content .navbar-topmenu-wrapper {
+  left: 58px;
+}
+
+.filemgr-wrapper.filemgr-sidebar-close .filemgr-content .navbar-topmenu-wrapper {
+  left: 278px;
+}
+
+.navcolse .filemgr-wrapper .filemgr-content .navbar-topmenu-wrapper {
+  left: 248px;
+}
+
+.filemgr-wrapper .filemgr-content .navbar-topmenu-wrapper {
+  left: 467px;
+}

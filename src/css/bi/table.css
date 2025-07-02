@@ -1,0 +1,752 @@
+/*
+ * @ V1.0.0
+ * @(#)table.css Apr 21, 2017
+ * by Mia
+ *.table
+ * Copyright (c) 2017- Business Intelligence Info. Tech.
+ * 8F, No.222, Sec.1, FuXing S. Road,
+ * Taipei, Taiwan
+ * All rights reserved.
+ *
+ */
+
+/**Reset table form dashforge.css**/
+/*table*/
+
+
+.table-bordered>:not(caption)>* {
+  border-color: var(--gray-border);
+}
+
+/* .table> :not(:last-child)> :last-child>* {
+  border-color: transparent
+} */
+
+.table-hover>tbody>tr:hover {
+  --bs-table-accent-bg: #D8E5F3 !important;
+}
+
+
+.table {
+  font-size: 14px;
+  color: var(--font);
+  background: #FFF;
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 8px; 
+}
+
+.table tr.active-td {
+  background: rgba(248, 243, 214, 0.432) !important;
+}
+
+ 
+table th {
+  max-width: 100%;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap; 
+  color: var(--gray-black);
+  font-size: 12px;
+}
+
+caption,
+.caption {
+  font-size: 16px;
+  display: block;
+  line-height: 1;
+  color: var(--primary);
+  font-weight: bold;
+  border-left: 4px solid var(--primary);
+  position: relative;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  border-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 10px;
+  white-space: nowrap;
+  caption-side: top;
+}
+
+.caption~.caption {
+  margin-top: 24px;
+}
+
+
+
+.td-info {
+  color: #2364AA;
+  font-size: 13px;
+}
+
+.collapse .td-info {
+  padding-left: 20px;
+}
+
+.th-info {
+  color: #64789e;
+  background-color: #f5f6fa !important;
+}
+
+.th-info::before {
+  content: '★';
+}
+
+@media (min-width: 768px) {
+  .table-responsive table {
+    overflow-x: auto !important;
+    white-space: nowrap;
+    border-top: none;
+    border-left: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width:1200px) {
+  .td-info {
+    color: #2364AA;
+    font-weight: normal;
+    font-size: 12px;
+  }
+}
+
+/**Add new style**/
+/*table-list*/
+.table.table-list {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  margin-bottom: 0;
+}
+
+.table.table-list thead tr th {
+  border: none;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #666;
+  background: transparent;
+  padding: 5px 10px;
+}
+
+.table.table-list tr th {
+  border-top: none;
+  background-color: #e9f3ff;
+  vertical-align: middle;
+  position: relative;
+}
+
+.table.table-list tbody tr {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.1s ease;
+}
+
+.table.table-list tbody tr:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.table.table-list tbody td:first-child,
+.table.table-list tbody th:first-child {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.table.table-list tbody td:last-child {
+  border-radius: 0px 5px 5px 0px;
+  border-right: none;
+}
+
+.table.table-list tbody td {
+  padding: 15px 10px;
+  background-color: #fff;
+  border: none;
+  border-right: 1px solid #f4f4f4;
+  /*    word-break: keep-all;*/
+  position: relative;
+  vertical-align: middle;
+}
+
+.table td.keep-all {
+  word-break: keep-all
+}
+.table td.break-all {
+  word-break: normal!important;
+  white-space: normal!important;
+}
+
+/*table-expanded*/
+
+.icon-collapse {
+  font-size: 22px;
+  color: #666;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+[aria-expanded="false"].icon-collapse:before,
+.icon-collapse:before {
+  content: "+";
+}
+
+[aria-expanded="true"].icon-collapse:before {
+  content: "-";
+}
+
+/* 調整每層的縮進 */
+.level-1 {
+  padding-left: 0px;
+  text-align: start !important;
+}
+
+.level-2 {
+  padding-left: 20px !important;
+  text-align: start !important;
+}
+
+.level-3 {
+  padding-left: 40px !important;
+  text-align: start !important;
+}
+
+.level-4 {
+  padding-left: 60px !important;
+  text-align: start !important;
+}
+
+
+.table td i .badge {
+  position: absolute;
+  top: -10px;
+  font-style: normal;
+  font-size: 12px;
+  background: #f38401;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.table td .label {
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 3px 5px;
+  margin: 5px
+}
+
+/*table fixhead and first td*/
+.table-scroll {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin: auto;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.table-scroll table {
+  width: 100%;
+  min-width: auto;
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table-wrap {
+  position: relative;
+}
+
+.table-scroll th,
+.table-scroll td {
+  vertical-align: middle; 
+}
+
+.table-scroll thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 32px;
+}
+
+.table-scroll thead th { 
+  white-space: nowrap;
+}
+
+.table-scroll thead td {
+  background: #f6f8fc;
+}
+
+/* safari and ios need the tfoot itself to be position:sticky also */
+.table-scroll tfoot,
+.table-scroll tfoot th,
+.table-scroll tfoot td {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: #BBDFF2;
+  color: #191919;
+  z-index: 4;
+}
+
+.table-scroll.colum1 th:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #ccc;
+}
+
+.table-scroll.colum1 thead th:first-child,
+.table-scroll.colum1 tfoot th:first-child {
+  z-index: 5;
+}
+
+.table-scroll thead th:first-child,
+.table-scroll tfoot th:first-child {
+  z-index: 5;
+}
+
+.table-scroll.colum2 th:nth-child(2) {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 148px;
+  z-index: 2;
+  background: #ccc;
+}
+
+.table-scroll.colum2 thead th:nth-child(2),
+.table-scroll.colum2 tfoot th:nth-child(2) {
+  z-index: 5;
+}
+
+.table-scroll.colum3 th:nth-child(2) {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 148px;
+  z-index: 2;
+  background: #ccc;
+}
+
+.table-scroll.colum3 th:nth-child(3) {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 296px;
+  z-index: 2;
+  background: #ccc;
+}
+
+.table-scroll.colum3 thead th:nth-child(2),
+.table-scroll.colum3 tfoot th:nth-child(2) {
+  z-index: 5;
+}
+
+.table-scroll.colum3 thead th:nth-child(3),
+.table-scroll.colum3 tfoot th:nth-child(3) {
+  z-index: 5;
+}
+
+/*table level 縮排*/
+.table .td-level {
+  padding-left: 20px !important;
+}
+
+.table .td-level2 {
+  padding-left: 35px !important;
+}
+
+
+
+/**頁碼**/
+.tableheader {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.tableheader .bi-pages {
+  margin: 0;
+}
+
+.bi-pages {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 8px 0;
+}
+
+.page-current {}
+
+.bi-pages .pagination {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+.pagination .form-select {
+  border-radius: 0;
+  border-left: 0;
+  padding-right: 32px;
+}
+
+.pagination-sm .form-select {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  height: 35px;
+}
+
+.pagination-sm .page-link {
+  height: 35px;
+}
+
+.First-left-etc a::before {
+  font-family: bootstrap-icons;
+  content: "\f276";
+}
+
+.left-etc a::before {
+  font-family: bootstrap-icons;
+  content: "\f284";
+}
+
+.right-etc a::before {
+  font-family: bootstrap-icons;
+  content: "\f285";
+}
+
+.Last-right-etc a::before {
+  font-family: bootstrap-icons;
+  content: "\f277";
+}
+
+.card-table .card-header .bi-pages {
+  margin: 0;
+}
+
+
+
+/** table 裝置小於767px時顯示樣式 **/
+@media screen and (max-width: 767px) {
+  .table.table-list tbody td {
+    padding: 5px 10px;
+    text-align: left;
+    border-right: none;
+    border-bottom: 1px solid #f4f4f4
+  }
+
+  .table-RWD caption {
+    background-image: none;
+  }
+
+  .table-RWD thead {
+    display: none;
+  }
+
+  .table-RWD tbody td {
+    display: block;
+    padding: .9rem;
+  }
+
+  .table-RWD tbody tr td {
+    border: 0px solid #ddd;
+    padding: 6px;
+  }
+
+  .table-RWD tbody tr td:first-of-type {
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .table-RWD tbody tr th {
+    display: block;
+    width: 100%;
+  }
+
+  /**/
+  .table-RWD tbody tr:nth-child(2n) {
+    background: rgba(213, 229, 248, 0.2);
+  }
+
+  /**/
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td:before,
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.sm:before,
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.md:before,
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.lg:before {
+    content: attr(data-th);
+    color: #2F3E48;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left !important;
+    display: inline-table;
+    width: 30%;
+    margin-right: 5px;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.sm:before {
+    width: 20%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.md:before {
+    width: 50%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.lg:before {
+    width: 75%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    align-items: center
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.flex {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>span {
+    display: flex;
+    flex-direction: column
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>span {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1;
+    width: 1px;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.sm>span {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1;
+    width: 1px;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.md>span {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1;
+    width: 1px;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.lg>span {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1;
+    width: 1px;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.keep-all:before {
+    word-break: keep-all !important;
+    white-space: pre;
+  }
+
+  /*搭配全角空格可換行*/
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.no-th:before {
+    content: '';
+    display: inline-table;
+    width: 0px;
+    margin-right: 0px
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td.no-th {
+    display: -webkit-box !important;
+    display: box !important
+  }
+
+  /*小計時選項縮小時移除左列標題空白*/
+  .table-RWD tbody tr td:empty {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  /*空值時不造成錯亂*/
+  .table-RWD tbody tr td>button {
+    line-height: 18px;
+  }
+
+  .table-RWD .form-group.has-feedback {
+    margin-bottom: 0px;
+    display: flex;
+    flex: 1;
+  }
+
+  /*強迫內容不斷行*/
+  .table-RWD th .content,
+  .table-RWD td .content {
+    display: inline-table !important;
+    white-space: nowrap !important;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr.subtotal td:before {
+    content: '';
+    font-weight: bold;
+    text-align: left !important;
+    display: inline-table;
+    width: 0px;
+    margin-right: 0px
+  }
+
+}
+
+/** table 其他元素及於裝置小於767px時顯示樣式**/
+@media screen and (max-width: 767px) {
+  .table-RWD td.td-show-RWD {
+    display: flex;
+    background: #cecece;
+    color: #000;
+  }
+
+  .table-RWD td.td-hide-RWD {
+    display: none !important;
+  }
+
+  .table-RWD tbody td.text-alignCenter,
+  .table tbody td.text-end {
+    text-align: left !important;
+  }
+
+  .table-RWD td.td-level {
+    padding-left: 6px !important;
+  }
+
+  .table-RWD td.td-level2 {
+    padding-left: 6px !important;
+  }
+}
+
+/** table-horizontal-RWD 於裝置小於767px時horizontal顯示樣式 **/
+@media screen and (max-width: 767px) {
+  .table-horizontal-RWD .merge-title {
+    background: #28292a;
+    color: #fff;
+  }
+
+  .table-horizontal-RWD tbody td:before {
+    width: 0em;
+  }
+
+  .table-horizontal-RWD tbody td {
+    display: block;
+    padding: 0em;
+  }
+
+  .table-horizontal-RWD tbody tr td:first-of-type {
+    background: none;
+    color: #676763;
+  }
+
+  .table td.td-hide-RWD {
+    display: none;
+  }
+
+  .table-horizontal-RWD.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.01);
+  }
+
+  .table-RWD tbody td.number {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .multiple-table table.table-top-line {
+    border-top: 1px solid #dddddd;
+  }
+
+  .multiple-table .table-bordered {
+    border-bottom: 0px;
+  }
+
+  .multiple-table div[class*="col-"]:last-child .table-bordered {
+    border-bottom: 1px solid #dddddd;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  /*th 斷行*/
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th {
+    display: block !important;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th,
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th.sm,
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th.md,
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th.lg {
+    font-weight: bold;
+    text-align: left !important;
+    width: 30%;
+    margin-right: 5px;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th.sm {
+    width: 20%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th.md {
+    width: 50%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-th.lg {
+    width: 75%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td .break-data {
+    width: 65%
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-data.sm {
+    width: 75%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-data.md {
+    width: 45%;
+  }
+
+  .table-RWD:not(.table-horizontal-RWD) tbody tr td>.break-data.lg {
+    width: 20%;
+  }
+}
+
+/*for table中checkbox list 對齊*/
+.table-checkbox tbody tr td:input {
+  vertical-align: top;
+}
+
+/*for table中 多個相連的btn 時有間距*/
+.table .btn+.btn {
+  margin-left: 3px
+}
+
+/* .table-todo td:nth-child(2),
+.table-todo td:nth-child(2) a {
+  background: #eaf3ff;
+  color: #2a8aff;
+} 
+
+.table-todo td:nth-child(3),
+.table-todo td:nth-child(3) a {
+  background: #f7f7f7;
+  color: #333;
+}
+
+.table-todo td:nth-child(4),
+.table-todo td:nth-child(4) a {
+  background: #fff0f0;
+  color: #f00;
+} 
+.table-todo td:not(:first-child),
+.table-todo td:not(:first-child) a {
+  background: #eaf3ff;
+}
+*/
+/* 首頁-審核作業看板 */
+/* .table-todo2 td:nth-child(4),
+.table-todo2 td:nth-child(4) a {
+  background: #fff6cc;
+  color: #333;
+} */
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  --bs-table-accent-bg: #f8f9fa;
+}

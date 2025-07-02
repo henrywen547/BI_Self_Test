@@ -1,0 +1,584 @@
+/*
+ * Dashforge Calendar Page
+ *
+ * This style is use for calendar page.
+ *.fc-daygrid-event-dot, .fc .fc-list-event-dot
+ */
+
+/* 行事曆第三版 */
+/* #region 變數 */
+:root {
+  --white: #FFFFFF;
+  --black: #2c2c2c;
+  --bg-btn: #e7e7e7;
+  --fc-btn: #2c2c2c;
+  --bg-meet: #D7C0AD;
+  --cal-pink: #FBD7D1;
+  --cal-yellow: #FFE3CF;
+  --lightblue: #E5EBF4;
+  --cal-green: #D0EDE1;
+  --cal-blue: #D0E3ED;
+  --purple: #D2D0ED;
+  --cal-blue-light: #A7E3F4;
+  --today: #FFFFDB;
+  --font: #2c2c2c;
+  --more: #0469D9;
+  --weight: 900;
+
+  /* icon */
+  --cal-ic-pink: #EF6149;
+  --cal-ic-yellow: #FE8E3D;
+  --ic-orange: #ec6945;
+  --ic-lightblue: #0469D9;
+  --cal-ic-green: #00A16D;
+  --ic-blue: #0E4491;
+  --ic-purple: #6944B7;
+}
+
+/* #endregion  */
+/* calendar */
+#calendar {
+  background: var(--white);
+  border-radius: 6px;
+}
+
+/* 首頁-工作事項 */
+.week-container .table td .btn {
+  padding: 3px 6px 4px;
+}
+
+.week-container .table td .btn+.btn {
+  margin-left: 0;
+}
+
+/* #region toolbar */
+.fc .fc-toolbar.fc-header-toolbar {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--fc-border-color, #ddd);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.fc-toolbar-title {
+  color: var(--black);
+}
+
+/* toolbar button */
+.fc .fc-button-primary {
+  background: var(--white) !important;
+  color: var(--gray-black) !important;
+  border: solid 1px var(--gray-border) !important;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.fc .fc-button-primary:hover,
+.fc .fc-button-primary:not(:disabled):not(.disabled):active,
+.fc .fc-button-primary:not(:disabled):not(.disabled).active {
+  background-color: var(--white) !important;
+  color: var(--info) !important;
+  border: solid 1px var(--info) !important;
+}
+
+/* toolbar button */
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background: var(--bg-btn);
+  border: 1px solid var(--bg-btn);
+  color: var(--fc-btn);
+}
+
+.fc .fc-button-primary:disabled {
+  background: var(--bg-btn);
+  color: var(--fc-btn);
+}
+
+/* weekday */
+.fc .fc-col-header-cell-cushion {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 5px 0;
+  color: var(--black)
+}
+
+.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {
+  left: 8px;
+  right: 8px;
+}
+
+.fc .fc-daygrid-event {
+  border-radius: 50px;
+  padding: 3px 8px;
+}
+
+/* .fc-daygrid-event-dot, .fc .fc-list-event-dot{ border-color: #fff; border-width: 3px;}  */
+.fc-daygrid-event-dot {
+  margin: 0 !important;
+}
+
+/**/
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: var(--today) !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today a {
+  color: var(--black);
+}
+
+/* day樣式 */
+.fc .fc-daygrid-day-number {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--black);
+  display: inline-block;
+  padding: 5px 10px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  margin: 6px 6px 0 0;
+  min-width: 20px;
+  text-align: center;
+}
+
+.fc .fc-scroller-liquid-absolute {
+  overflow: visible !important;
+}
+
+/* event樣式 */
+.fc .fc-daygrid-event {
+  padding-left: 26px;
+}
+
+.fc-daygrid-event-dot {
+  display: none;
+}
+
+.fc .fc-daygrid-event:hover {
+  scale: 1.1;
+}
+
+.fc-daygrid-day-events .fc-daygrid-event:hover {
+  scale: 1.02;
+}
+
+.fc-event-time {
+  color: var(--font) !important;
+}
+
+.fc-event-title {
+  color: var(--font) !important;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: normal !important;
+}
+
+.fc-daygrid-event-harness a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  border: none !important;
+}
+
+/* .fc-daygrid-event-harness .cal-rec{
+  background: var(--cal-pink);
+}  */
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: var(--gray-border);
+}
+
+/* #endregion */
+
+.cal-icon::before {
+  position: absolute;
+  left: 2px;
+  font-family: "Font Awesome 5 Free";
+  content: "\f0a1";
+  border-radius: 50px;
+  background-color: var(--white);
+  font-weight: var(--weight);
+  padding: 0.06rem 0.2rem;
+  width: 20px;
+  height: 20px;
+}
+
+.cal-icon:focus:before {
+  top: 2px;
+  left: 2px;
+}
+
+/* 會議 */
+.cal-meeting,
+.cal-meeting:hover {
+  background: var(--bg-meet) !important;
+}
+
+.cal-meeting::before {
+  content: "";
+  background-image: url(../images/icon/meeting_icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
+/* 外訪 */
+.cal-visit,
+.cal-visit:hover {
+  background: var(--cal-yellow) !important;
+}
+
+.cal-visit::before,
+.cal-visit:focus::before {
+  content: "\f500";
+  color: var(--cal-ic-yellow);
+}
+
+/* 客戶來行 */
+.cal-bank,
+.cal-bank:hover {
+  background: var(--cal-green) !important;
+}
+
+.cal-bank::before,
+.cal-bank:focus::before {
+  content: "\f007";
+  color: var(--cal-ic-green);
+}
+
+/* 客戶重要日子 */
+.cal-FC,
+.cal-FC:hover {
+  background: var(--cal-blue) !important;
+}
+
+.cal-FC::before,
+.cal-FC:focus::before {
+  content: "\f133";
+  color: var(--ic-blue);
+}
+
+/* 聯繫紀錄 */
+.cal-rec,
+.cal-rec:hover {
+  background: var(--cal-pink) !important;
+}
+
+.cal-rec::before,
+.cal-rec:focus:before {
+  content: "\f130";
+  color: var(--cal-ic-pink);
+}
+
+/* 商品到期 */
+.cal-expire,
+.cal-expire:hover {
+  background: var(--cal-blue-light) !important;
+}
+
+.cal-expire::before,
+.cal-expire:focus:before {
+  content: "";
+  background-image: url(../images/icon/icon_expire.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+
+}
+
+/* 客戶生日 */
+.cal-birthday,
+.cal-birthday:hover {
+  background: var(--lightblue) !important;
+}
+
+.cal-birthday::before,
+.cal-birthday:focus::before {
+  content: "\f1fd";
+  color: var(--ic-lightblue) !important;
+}
+
+/* 其他 */
+.cal-other,
+.cal-other:hover {
+  background: var(--purple) !important;
+}
+
+.cal-other::before,
+.cal-other:focus::before {
+  content: "\f017";
+  color: var(--ic-purple);
+}
+
+/* more */
+.cal-more {
+  background: var(--white);
+  border: 1px solid var(--more) !important;
+  color: var(--more);
+  font-weight: 700;
+}
+
+.cal-more:hover {
+  background: var(--white);
+  border: 1px solid var(--ho-more);
+  color: var(--ho-more);
+  font-weight: 700;
+}
+
+/*週*/
+.fc-timegrid-event .fc-event-time {
+  margin-left: 24px;
+}
+
+.fc-timegrid-event {
+  border: 0;
+}
+
+/* list */
+.fc-list-event::before {
+  content: none;
+}
+
+.fc-list-event {
+  background: transparent !important;
+}
+
+.fc-list-event:hover {
+  scale: 1;
+}
+
+.fc-list-event td:first-child {
+  padding-left: 40px;
+}
+
+.fc-list-event td:first-child:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: var(--weight);
+  position: absolute;
+  left: 16px;
+}
+
+.fc-list-event.cal-rec td:first-child:before {
+  content: "\f0a1";
+  color: var(--cal-ic-pink);
+}
+
+.fc-list-event.cal-visit td:first-child:before {
+  content: "\f500";
+  color: var(--cal-ic-yellow);
+}
+
+.fc-list-event.cal-bank td:first-child:before {
+  content: "\f007";
+  color: var(--cal-ic-green);
+}
+
+.fc-list-event.cal-FC td:first-child:before {
+  content: "\f133";
+  color: var(--ic-blue);
+}
+
+.fc-list-event.cal-other td:first-child:before {
+  content: "\f133";
+  color: var(--ic-blue);
+}
+
+.fc-list-event-dot {
+  display: none !important;
+}
+
+/* cal-notify */
+.cal-icon {
+  position: relative;
+}
+
+.cal-notify {
+  position: absolute;
+  top: 0;
+  translate: inherit;
+  padding: 2px;
+  background: red;
+}
+
+.actionlist {
+  color: #212529
+}
+
+.actionlist .action-btn {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem !important;
+  background-color: #f8f9fa;
+  padding: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.actionlist .action-btn button {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem
+}
+
+.actionlist .action-btn span {
+  width: 35px;
+}
+
+.swiper-actionlist {
+  display: none;
+}
+
+.basicInfo {
+  margin-right: 2rem;
+}
+
+/* ----- 工作事項內button樣式 ----- */
+.btn-week {
+  font-size: 14px;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  text-align: start;
+  border-radius: 50px;
+  border: none !important;
+  position: relative;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-week::before {
+  position: absolute;
+  left: 6px;
+  font-family: "Font Awesome 5 Free";
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 900;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-week p {
+  margin-left: 1.75rem;
+  color: var(--gray-black);
+}
+
+.btn-week.cal-more p {
+  margin-left: 0;
+}
+
+.btn-week.active {
+  opacity: 0.5;
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .actionlist {
+    display: none;
+  }
+
+  .swiper-actionlist {
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+
+  .swiper-actionlist .tx-title {
+    margin: 0 0 8px 0;
+  }
+
+  .mobile-actionlist .card {
+    flex-direction: row;
+  }
+
+  .mobile-actionlist .card-form .card-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .mobile-actionlist a {
+    width: 80px;
+    height: 60px;
+  }
+
+  .mobile-actionlist .action-btn {
+    flex-direction: column;
+    margin: 0 0.25rem;
+  }
+
+  .mobile-actionlist .action-btn button {
+    margin-right: 0;
+  }
+
+  .mobile-actionlist .action-btn span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .step-title .bi-x-circle-fill {
+    color: var(--fc-delete);
+    position: absolute;
+    content: '';
+    top: -11px;
+    right: -9px;
+    font-size: 14px;
+  }
+
+  .btn-container {
+    display: flex;
+  }
+
+  .btn-container button {
+    margin-right: 0.25rem;
+  }
+
+  .tags {
+    margin-bottom: 0.5rem;
+  }
+
+  .tags .step-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .tags .bi-x-circle-fill {
+    top: -6px;
+    right: -4px;
+    z-index: 5;
+  }
+
+  .tags .nav {
+    flex-direction: column;
+  }
+
+  .tab-step .step-item:first-child .step-link {
+    padding-left: 30px;
+  }
+
+  .swiper-button-next {
+    margin-bottom: 1rem;
+  }
+}

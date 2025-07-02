@@ -1,0 +1,124 @@
+.container-body {
+  font-family: Arial, sans-serif;
+  background: url(../../images/login/login-bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.logo img {
+  height: 70px;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container h2 {
+  color: #1e3c8d;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-group {
+  flex-direction: column;
+}
+
+.input-group>.form-select {
+  width: 100%;
+}
+
+.form-check {
+  text-align: start;
+}
+
+.benefits {
+  list-style: none;
+  padding-left: 0;
+  text-align: start;
+}
+
+/* 以其他帳號登入 */
+hr.divider {
+  height: 1px;
+  margin: 30px 0;
+  padding: 0;
+  overflow: visible;
+  border: none;
+  background-color: #e7e7e9;
+  color: #6e6d7a;
+  text-align: center;
+}
+
+hr.divider.sign-in:after {
+  content: "或以其他帳號登入";
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  padding: 0 16px;
+  background: #fff;
+  font: normal 14px / 14px "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+hr.divider.register:after {
+  content: "或以其他帳號註冊";
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  padding: 0 16px;
+  background: #fff;
+  font: normal 14px / 14px "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.login-account {
+  margin-bottom: 20px;
+}
+
+.login-account .btn {
+  height: 35px;
+}
+
+.login-account .btn i {
+  font-size: 18px;
+}
+
+.btn-line {
+  padding: 4px 16px;
+}
+
+.mb-4 p {
+  margin-bottom: 10px;
+}

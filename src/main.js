@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './style.css'
+import './css/bi/style.css'
 
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'

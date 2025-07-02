@@ -25,6 +25,7 @@
                 }"
                 type="button"
                 label="儲存"
+                style="margin-top: 20px"
                 size="small"
                 @click="saveWhiteboard"
                 :disabled="!whiteboardValid">
@@ -32,13 +33,15 @@
         </div>
     </div>
     <Dialog
-        v-model:visible="dialogVisible"
+        v-model:visible="dialog.dialogVisible"
         modal
-        header="選擇頁籤"
-        :style="{ width: '25vw' }"
+        :style="{ width: '25vw', backgroundColor: '#FFFFFF', color: '#000000' }"
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
         :closable="false"
     >
+        <div class="modal-header">
+            <h4 class="modal-title">選擇頁籤</h4>
+        </div>
         <div
             v-for="option in ops"
             :key="option.value"
@@ -51,70 +54,66 @@
                 {{ option.label }}
             </div>
         </div>
-        <div class="button-row">
-            <Button
-                type="button"
-                label="儲存"
-                size="small"
-                @click="
-                    dialogVisible = false;
-                    addPanel();
-                "
-            ></Button>
+        <div class="modal-footer">
+            <button
+                class="btn btn-primary"
+                @click="dialog.dialogVisible = false; addPanel();">
+                確認
+            </button>
         </div>
     </Dialog>
     <Dialog
-        v-model:visible="defSettingDialogVisible"
+        v-model:visible="dialog.defSettingDialogVisible"
         modal
-        header="物件詳細資訊"
-        :style="{ width: '25%' }"
+        :style="{ width: '25%', backgroundColor: '#FFFFFF', color: '#000000' }"
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
         :closable="false">
-        <Tabs value="0">
-                <TabList>
-                    <Tab value="0">圖表設定</Tab>
-                    <Tab value="1">來源資料設定</Tab>
-                </TabList>
-                <TabPanels>
-                    <TabPanel value="0">
-                        <label for="objectname">元件名稱:</label>
-                        <InputText id="objectname" v-model="form.objectName"/>
-                        <br />
-                        <label for="objectdesc">元件描述:</label>
-                        <InputText id="objectdesc" v-model="form.objectDesc"/>
-                    </TabPanel>
-                    <TabPanel value="1">
-                        <Select
-                            v-model="form.selectedAnalysis"
-                            :options="analysisOptions"
-                            variant="filled"
-                            showClear
-                            optionLabel="analysisName"
-                            placeholder="選擇資料來源"
-                            class="w-full md:w-56"
-                        ></Select>
-                    </TabPanel>
-                </TabPanels>
-            </Tabs>    
-            <div class="button-row">
-                <Button
-                    v-tooltip.bottom="{
-                        value: '請填寫元件名稱、描述和資料來源',
-                        disabled: !(!form.objectName || !form.objectDesc || !form.selectedAnalysis)
-                    }"
-                    type="button"
-                    label="儲存"
-                    size="small"
-                    @click="defSettingDialogVisible = false;
-                    submit();"
-                    :disabled="!form.objectName || !form.objectDesc || !form.selectedAnalysis"
-                ></Button>
+            <div class="modal-header">
+                <h4 class="modal-title">物件詳細資訊</h4>
+            </div>
+            <div class="tab-nav-pills">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ active: tab.currentTab === 'object-info' }" @click.prevent="tab.currentTab = 'object-info'" href="#">圖表設定</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ active: tab.currentTab === 'data-source' }" @click.prevent="tab.currentTab = 'data-source'" href="#">資料來源設定</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" v-show="tab.currentTab === 'object-info'">
+                        <label class="form-label"> 元件名稱</label>
+                        <div class="card-body">
+                            <input name="" class="form-control" id="" type="text" size="15" maxlength="10" value="" v-model="form.objectName" placeholder="請輸入元件名稱">
+                        </div>
+                        <label class="form-label"> 元件描述</label>
+                        <div class="card-body">
+                            <input name="" class="form-control" id="" type="text" size="15" maxlength="10" value="" v-model="form.objectDesc" placeholder="請輸入元件描述">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" v-show="tab.currentTab === 'data-source'">
+                        <label class="form-label"> 資料來源</label>
+                        <select name="" class="form-select" v-model="form.selectedAnalysis">
+                            <option disabled>--</option>
+                            <option v-for="option in analysisOptions" :key="option.analysisName" :value="option.analysisName">
+                                {{ option.analysisName }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                    class="btn btn-primary"
+                    @click="dialog.defSettingDialogVisible = false; submit();"
+                    :disabled="!form.objectName || !form.objectDesc || !form.selectedAnalysis">
+                    確認
+                </button>
             </div>
     </Dialog>
 </template>
 
 <script>
-import { ref } from 'vue'
 import { createSplitterTemplate } from './utils/SplitterFactory.js';
 import ElementSidebar from './components/ElementSidebar.vue';
 import BarChart from './components/BarChart.vue';
@@ -124,6 +123,7 @@ import Table from './components/Table.vue';
 import Icon1by1 from '../../assets/Icon1by1.svg'
 import Icon1by2 from '../../assets/Icon1by2.svg'
 import Icon1by3 from '../../assets/Icon1by3.svg'
+import { tab } from '@primeuix/themes/aura/tabs';
 
 export default {
     components: {
@@ -135,21 +135,26 @@ export default {
     },
     data () {
         return {
-            dialogVisible: ref(false),
-            defSettingDialogVisible: ref(false),
+            tab: {
+                currentTab: 'object-info'
+            },
+            dialog: {
+                dialogVisible: false,
+                defSettingDialogVisible: false,
+            },
+            form: {
+                objectName: '',
+                objectDesc: '',
+                selectedAnalysis: null
+            },
             selected: '1by1',
             ops: [
                 { value: '1by1', label: '1X1', src: Icon1by1 },
                 { value: '1by2', label: '1X2', src: Icon1by2 },
                 { value: '1by3', label: '1X3', src: Icon1by3 }
             ],
-            panels: ref(null),
-            form: {
-                objectName: '',
-                objectDesc: '',
-                selectedAnalysis: null
-            },
-            analysisOptions: ref([
+            panels: null,
+            analysisOptions: [
                 {
                     analysisName: 'Example',
                 },
@@ -159,13 +164,13 @@ export default {
                 {
                     analysisName: 'Example3',
                 }
-            ]),
-            setupComplete: ref(false),
-            currentPanel: ref(null),
+            ],
+            setupComplete: false,
+            currentPanel: null,
         }
     },
     mounted() {
-        this.dialogVisible = true;
+        this.dialog.dialogVisible = true;
     },
     computed: {
         whiteboardValid() {
@@ -188,6 +193,8 @@ export default {
         handleDrop(event, panel) {
             const item = JSON.parse(event.dataTransfer.getData('item'));
             if (item && item.source === 'element-sidebar') {
+                this.currentPanel = panel;
+                this.currentPanel.setupComplete = false;
                 if (item.type === 'bar') {
                     panel.sidebarItem.type = BarChart;
                     panel.sidebarItem.type_str = 'BarChart';
@@ -201,8 +208,7 @@ export default {
                     panel.sidebarItem.type = Table;
                     panel.sidebarItem.type_str = 'Table';
                 }
-                this.currentPanel = panel;
-                this.defSettingDialogVisible = true;
+                this.dialog.defSettingDialogVisible = true;
             }
         },
         submit() {
@@ -215,7 +221,11 @@ export default {
                 selectedAnalysis: this.form.selectedAnalysis
             }
             this.currentPanel.setupComplete = true;
-            console.log(this.panels);
+            // Reset form
+            this.form.objectName = '';
+            this.form.objectDesc = '';
+            this.form.selectedAnalysis = null;
+            this.tab.currentTab = 'object-info';
         },
         saveWhiteboard() {
             if (!this.whiteboardValid) {
@@ -266,6 +276,7 @@ export default {
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
+    background-color: #E7E7E7;
 }
 .template-selector {
     display: flex;

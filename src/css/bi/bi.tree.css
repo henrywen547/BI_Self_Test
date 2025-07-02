@@ -1,0 +1,132 @@
+/*
+ * @ V1.0.0
+ * @(#)bi.tree.css Apr 21, 2017
+ * by Blake
+ *
+ * Copyright (c) 2017- Business Intelligence Info. Tech.
+ * 8F, No.222, Sec.1, FuXing S. Road,
+ * Taipei, Taiwan
+ * All rights reserved.
+ *
+ * work with bi.tree.js
+ */
+.bi-tree-root {
+    font-family: 'Microsoft JhengHei';
+    padding: 0px;
+    margin: 0px
+}
+
+ul.bi-tree-root {
+    padding: 0px;
+    margin: 0px;
+}
+
+.bi-tree-root li {
+    padding: 5px 15px;
+}
+
+.bi-tree-root div {
+    display: inline;
+}
+
+.bi-tree-text {
+    cursor: pointer;
+    line-height: 26px;
+}
+
+.bi-tree-root a:hover {
+    color: red;
+}
+
+.bi-tree-root a {
+    text-decoration: underline;
+}
+
+.bi-tree-removeY {
+    color: #FF0000;
+    text-decoration: line-through;
+}
+
+.bi-tree-removeN {
+    color: #0000FF;
+}
+
+.bi-tree-arrow {
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    margin-right: 8px !important;
+    cursor: pointer;
+    float: left;
+}
+
+.bi-tree-text.hover {
+    color: #d93300;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 6px;
+}
+
+.bi-tree-root .bi-tree-collapsed:before {
+    font-family: "bootstrap-icons";
+    content: "\f4fd";
+    /*     background-image: url(arrow-collapsed.gif); */
+}
+
+.bi-tree-root .bi-tree-expanded:before {
+    font-family: "bootstrap-icons";
+    content: "\f2e9";
+    /*     background-image: url(arrow-expanded.gif); */
+}
+
+.bi-tree-root * {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 5px 0;
+}
+
+.bi-tree-checkbox:before {
+    font-family: "bootstrap-icons";
+    content: "\f584";
+}
+
+.bi-tree-checkbox {
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+    padding: 0;
+    margin-right: 8px;
+    cursor: pointer;
+    float: left;
+}
+
+.bi-tree-halfChecked:before {
+    font-family: "bootstrap-icons";
+    content: "\f26c";
+}
+
+.bi-tree-checked:before {
+    font-family: "bootstrap-icons";
+    content: "\f26c";
+}
+
+.bi-tree-root img.arrow {
+    padding: 2px 0 0 0;
+    border: 0;
+    width: 20px;
+}
+
+.bi-tree-root li ul {
+    padding: 4px 0 12px 12px;
+    margin: 0;
+    margin-top: 10px;
+    background: rgba(223, 238, 255, 0.4);
+}
+
+
+.bi-tree-root ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

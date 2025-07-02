@@ -29,8 +29,30 @@
             </div>
         </div>
     </div>
+    <!--以下程式碼是將上面程式碼樣式套用公版css-->
+    <!--
+    <aside class="aside aside-fixed">
+        <div class="aside-body pt-4">
+            <ul class="nav nav-aside">
+                <li class="nav-label">選項列表</li>
+                <li class="nav-item with-sub show" v-for="group in chartGroups" :key="group.label">
+                    {{ group.label }}
+                    <ul>
+                        <li class="" v-for="item in group.items" :key="item.label" draggable="true" @dragstart="ondragStart($event, item)">
+                            {{ item.label }}
+                        </li> 
+                    </ul>
+                </li>
+                <li class="nav-item" draggable="true" @dragstart="ondragStart($event, tableItem)">
+                    {{ tableItem.label }}
+                </li>
+            </ul>
+        </div>
+    </aside>
+    -->
 </template>
 <script>
+// import '../../../css/bi/style.css'
 export default {
     name: 'ElementSidebar',
     data () {
@@ -90,9 +112,10 @@ export default {
     height: 350px;
     top: 0;
     left: 0;
-    background: #f4f4f4ea;
+    background: #e7e7e7;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: #D4D4D4
 }
 .menu-group {
     margin-bottom: 8px;
